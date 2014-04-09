@@ -62,7 +62,7 @@ public partial class Translate : System.Web.UI.Page
 
             #endregion
 
-            #region Recompile the Files back together
+            #region Recompile the files
 
             Recompiler r = new Recompiler();
 
