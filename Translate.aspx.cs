@@ -11,6 +11,7 @@ using FileUniter;
 
 public partial class Translate : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -27,12 +28,6 @@ public partial class Translate : System.Web.UI.Page
 
                 Response.Redirect("Default.aspx");
             }
-
-            #region We have a valid file
-            // Bind the dropdown list
-            languagesDDL.DataSource = new ArrayList() { "English", "Spanish", "Italian", "German", "French", "Lithuanian", };
-            languagesDDL.DataBind();
-            #endregion
         }
 
     }
@@ -45,35 +40,59 @@ public partial class Translate : System.Web.UI.Page
     protected void TranslateClick(object sender, EventArgs e)
     {
         bool success = true;
-        String givenFileName = "tracker";
-        String wordFileName = "es";
 
-        // The hard part
+        // The file is assumed to exist at this point
+        String filePath = (String) Session["currentFilePath"];
+        String fileName = (String)Session["filename"];
+        String languageCode = languagesDDL.SelectedValue;
 
-       
-        #region Recompile the Files back together
-
-        Recompiler r = new Recompiler();
-
-        String translationFileIndexed = Server.MapPath("~/indexedFiles/" + givenFileName +"_indexed.php");
-        String wordsFile = Server.MapPath("~/wordFiles/" + wordFileName + ".txt");
-        String destinationFile = Server.MapPath("~/Results/" + givenFileName + "_final.php");
-
-        success = r.Recompile(translationFileIndexed, wordsFile, destinationFile);
-
-        // When completed if succsessful
-        // Show download button
-        if (success)
+        try
         {
-            downloadButton.Visible = true;
-            Session["downloadMe"] = destinationFile;
+            #region Split the file -- Todd
+
+            // Given filePath and fileName WITHOUT extension (i.e. "~/uploadedfiles/forum.php" AND "forum")
+            // Create "~/indexedFiles/forum_indexed.php" AND "~/wordFiles/forum_words.txt"
+
+            #endregion
+
+            #region Translate the file -- Taylor
+            
+            // Given a language code AND a file with words  AND fileName WITHOUT extension(i.e. "es" AND "~/wordFiles/forum_words.txt" AND "forum" "
+            // Create "~/wordFiles/forum_words_translated.txt"
+
+            #endregion
+
+            #region Recompile the Files back together
+
+            Recompiler r = new Recompiler();
+
+            String translationFileIndexed = Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php");
+            String translatedWords = Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt");
+            String destinationFile = Server.MapPath("~/Results/" + fileName + "_final.php");
+
+            success = r.Recompile(translationFileIndexed, translatedWords, destinationFile);
+
+            // When completed, if succsessful
+            // Show download button
+            if (success)
+            {
+                downloadButton.Visible = true;
+                Session["downloadMe"] = destinationFile;
+            }
+            else
+            {
+                Session["downloadMe"] = null;
+                TranslateStatusLabel.Text = "Could not translate the file!";
+            }
+
+            #endregion
         }
-        else
+        catch (Exception exc)
         {
             Session["downloadMe"] = null;
+            TranslateStatusLabel.Text = "Could not translate the file!";
         }
-
-        #endregion
+        
     
     }
 
