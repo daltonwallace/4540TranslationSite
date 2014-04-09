@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FileUniter;
+
 
 public partial class Translate : System.Web.UI.Page
 {
@@ -43,22 +45,49 @@ public partial class Translate : System.Web.UI.Page
     protected void TranslateClick(object sender, EventArgs e)
     {
         bool success = true;
+        String givenFileName = "tracker";
+        String wordFileName = "es";
 
         // The hard part
 
+       
+        #region Recompile the Files back together
+
+        Recompiler r = new Recompiler();
+
+        String translationFileIndexed = Server.MapPath("~/indexedFiles/" + givenFileName +"_indexed.php");
+        String wordsFile = Server.MapPath("~/wordFiles/" + wordFileName + ".txt");
+        String destinationFile = Server.MapPath("~/Results/" + givenFileName + "_final.php");
+
+        success = r.Recompile(translationFileIndexed, wordsFile, destinationFile);
 
         // When completed if succsessful
         // Show download button
         if (success)
         {
             downloadButton.Visible = true;
+            Session["downloadMe"] = destinationFile;
         }
+        else
+        {
+            Session["downloadMe"] = null;
+        }
+
+        #endregion
+    
     }
+
 
     protected void DownloadFile(object sender, EventArgs e)
     {
+        // Check to ensure that there exists a final file to download
+        if (Session["downloadMe"] == null)
+        {
+            return;
+        }
+
         //To Get the physical Path of the file(test.txt)
-        string filepath = (String)Session["currentFilePath"];
+        string filepath = (String)Session["downloadMe"];
 
         // Create New instance of FileInfo class to get the properties of the file being downloaded
         FileInfo myfile = new FileInfo(filepath);
@@ -72,7 +101,7 @@ public partial class Translate : System.Web.UI.Page
 
             Response.ClearContent();
 
-            Response.AddHeader("Content-Disposition", "attachment; filename=Tracker.php");
+            Response.AddHeader("Content-Disposition", "attachment; filename=Final.php");
 
             Response.AddHeader("Content-Length", myfile.Length.ToString());
 
