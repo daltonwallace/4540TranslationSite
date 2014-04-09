@@ -20,22 +20,22 @@ public partial class _Default : System.Web.UI.Page
         {
             try
             {
-                // Ensure correct file type
-                if (FileUploadControl.PostedFile.ContentType == "text/plain")
+                // Ensure correct file type (either txt or php)
+                if (FileUploadControl.PostedFile.ContentType == "text/plain" || FileUploadControl.PostedFile.ContentType == "application/octet-stream")
                 {
                     // Ensure appropriate length
                     if (FileUploadControl.PostedFile.ContentLength < 102400)
                     {
-                        string filename = Path.GetFileName(FileUploadControl.FileName);
-                        string path = "~/UploadedFiles/" + filename;
+                        string path = "~/UploadedFiles/" + Path.GetFileName(FileUploadControl.FileName);
                         path = Server.MapPath(path);
+
                         // Saves the uploaded file to the UploadedFiles folder in our root directory
                         FileUploadControl.SaveAs(path);
                         StatusLabel.Text = "Upload status: File uploaded!";
 
-                        // Set the session and redirect
+                        // Set the session variables and redirect
                         Session["currentFilePath"] = path;
-                        Session["filename"] = filename;
+                        Session["filename"] = Path.GetFileNameWithoutExtension(FileUploadControl.FileName);
                         
                         // Redirect to translation page
                         Response.Redirect("Translate.aspx");
@@ -44,7 +44,7 @@ public partial class _Default : System.Web.UI.Page
                         StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
                 }
                 else
-                    StatusLabel.Text = "Upload status: Only TXT files are accepted!";
+                    StatusLabel.Text = "Upload status: Only TXT and PHP files are accepted!";
             }
             catch (Exception ex)
             {

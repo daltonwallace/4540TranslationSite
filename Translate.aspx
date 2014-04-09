@@ -16,7 +16,12 @@
         <div>
 
             <h2>Select translation language: </h2>
-            <asp:DropDownList ID="languagesDDL" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="languagesDDL" runat="server">
+                <asp:ListItem Text="English" Value="en" Selected="True"></asp:ListItem>
+                <asp:ListItem Text="Spanish" Value="es"></asp:ListItem>
+                <asp:ListItem Text="Option 3" Value="3"></asp:ListItem>
+                <asp:ListItem Text="Option 4" Value="4"></asp:ListItem>
+            </asp:DropDownList>
 
         </div>
 
@@ -29,6 +34,8 @@
         </div>
         
     </form> 
+
+    <asp:Label ID="TranslateStatusLabel" runat="server" Text=""></asp:Label>
 </asp:Content>
 
        
