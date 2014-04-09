@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using FileUniter;
 
+using ST;
+
 
 public partial class Translate : System.Web.UI.Page
 {
@@ -40,6 +42,13 @@ public partial class Translate : System.Web.UI.Page
     protected void TranslateClick(object sender, EventArgs e)
     {
         bool success = true;
+
+        // The hard part
+        // Taylor is having difficulty getting the file paths correct during testing.
+        // Translate requires 3 params : 1-> the input path; 2-> language code; 3-> the output path
+        // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
+        SeleniumTranslator.TranslateInputFile("/* INPUT FILE */", "/* LANG */", "/* DESTINATION */");
+        SeleniumFixer.FixInput("/* INPUT */", "/* FIXED OUTPUT */");
 
         // The file is assumed to exist at this point
         String filePath = (String) Session["currentFilePath"];
