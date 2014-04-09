@@ -10,6 +10,8 @@ using FileUniter;
 
 using ST;
 
+using ST;
+
 
 public partial class Translate : System.Web.UI.Page
 {
@@ -49,7 +51,7 @@ public partial class Translate : System.Web.UI.Page
         // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
         SeleniumTranslator.TranslateInputFile("/* INPUT FILE */", "/* LANG */", "/* DESTINATION */");
         SeleniumFixer.FixInput("/* INPUT */", "/* FIXED OUTPUT */");
-
+       
         // The file is assumed to exist at this point
         String filePath = (String) Session["currentFilePath"];
         String fileName = (String)Session["filename"];
