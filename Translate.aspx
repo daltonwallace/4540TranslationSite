@@ -19,8 +19,6 @@
             <asp:DropDownList ID="languagesDDL" runat="server">
                 <asp:ListItem Text="English" Value="en" Selected="True"></asp:ListItem>
                 <asp:ListItem Text="Spanish" Value="es"></asp:ListItem>
-                <asp:ListItem Text="Option 3" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Option 4" Value="4"></asp:ListItem>
             </asp:DropDownList>
 
         </div>
