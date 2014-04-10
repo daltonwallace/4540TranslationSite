@@ -125,6 +125,7 @@ public partial class Translate : System.Web.UI.Page
 
         //To Get the physical Path of the file(test.txt)
         string filepath = (String)Session["downloadMe"];
+        String fileName = (String)Session["filename"];
 
         // Create New instance of FileInfo class to get the properties of the file being downloaded
         FileInfo myfile = new FileInfo(filepath);
@@ -138,7 +139,7 @@ public partial class Translate : System.Web.UI.Page
 
             Response.ClearContent();
 
-            Response.AddHeader("Content-Disposition", "attachment; filename=Final.php");
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName + "_Final.php");
 
             Response.AddHeader("Content-Length", myfile.Length.ToString());
 

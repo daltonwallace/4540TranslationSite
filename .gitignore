@@ -10,15 +10,15 @@ wordFiles/*
 *.suo
 *.user
 *.sln.docstates
-Web.config
+#Web.config
 # Build results
-[Dd]ebug/
+#[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 x64/
-build/
+#build/
 bld/
-#[Oo]bj/
+[Oo]bj/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
