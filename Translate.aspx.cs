@@ -44,72 +44,87 @@ public partial class Translate : System.Web.UI.Page
     {
         bool success = true;
 
-        // The hard part
-        
-       
         // The file is assumed to exist at this point
         String filePath = (String) Session["currentFilePath"];
         String fileName = (String)Session["filename"];
         String languageCode = languagesDDL.SelectedValue;
 
-        try
-        {
-            #region Split the file -- Todd
+        #region Split the file -- Todd
 
-            // Given filePath and fileName WITHOUT extension (i.e. "~/uploadedfiles/forum.php" AND "forum")
-            // Create "~/indexedFiles/forum_indexed.php" AND "~/wordFiles/forum_words.txt"
+        // Given uploaded filePath and fileName WITHOUT extension 
+        // (i.e. "~/uploadedfiles/forum.php" AND "forum")
 
-            #endregion
+        //                        Create: 
+        // Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php") 
+        //                         AND 
+        // Server.MapPath("~/wordFiles/" + fileName + "_words.txt")
 
-            #region Translate the file -- Taylor
-
-            int isDone = -1;
-
-            // Given a language code AND a file with words  AND fileName WITHOUT extension(i.e. "es" AND "~/wordFiles/forum_words.txt" AND "forum" "
-            // Create "~/wordFiles/forum_words_translated.txt"
-
-            // Taylor is having difficulty getting the file paths correct during testing.
-            // Translate requires 3 params : 1-> the input path; 2-> language code; 3-> the output path
-            // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
-            SeleniumTranslator.TranslateInputFile(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"), languageCode, Server.MapPath("~/tmp/" + fileName + "_words.txt"), ref isDone);
-
-            // Wait until the process is completed...
-            while (isDone < 0) { Thread.Sleep(5000); };
-
-            SeleniumFixer.FixInput(Server.MapPath("~/tmp/" + fileName + "_words.txt"), Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt"));
-
-            #endregion
-
-            #region Recompile the files
-
-            Recompiler r = new Recompiler();
-
-            String translationFileIndexed = Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php");
-            String translatedWords = Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt");
-            String destinationFile = Server.MapPath("~/Results/" + fileName + "_final.php");
-
-            success = r.Recompile(translationFileIndexed, translatedWords, destinationFile);
-
-            // When completed, if succsessful
-            // Show download button
-            if (success)
+            try
             {
-                downloadButton.Visible = true;
-                Session["downloadMe"] = destinationFile;
+
             }
-            else
+            catch (Exception eTodd)
             {
-                Session["downloadMe"] = null;
-                TranslateStatusLabel.Text = "Could not translate the file!";
+                TranslateStatusLabel.Text = "Could not split the file! Error 1";
             }
 
             #endregion
-        }
-        catch (Exception exc)
-        {
-            Session["downloadMe"] = null;
-            TranslateStatusLabel.Text = "Could not translate the file!";
-        }
+
+        #region Translate the file -- Taylor
+
+            try
+            {
+                int isDone = -1;
+
+                // Given a language code AND a file with words  AND fileName WITHOUT extension(i.e. "es" AND "~/wordFiles/forum_words.txt" AND "forum" "
+                // Create "~/wordFiles/forum_words_translated.txt"
+
+                SeleniumTranslator.TranslateInputFile(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"), languageCode, Server.MapPath("~/tmp/" + fileName + "_words.txt"), ref isDone);
+
+                // Wait until the process is completed...
+                while (isDone < 0) { Thread.Sleep(5000); };
+
+                SeleniumFixer.FixInput(Server.MapPath("~/tmp/" + fileName + "_words.txt"), Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt"));
+            }
+            catch (Exception eTaylor)
+            {
+                TranslateStatusLabel.Text = "Could not translate the file! Error 2";
+            }
+            
+
+            #endregion
+
+        #region Recompile the files
+
+            try
+            {
+                Recompiler r = new Recompiler();
+
+                String translationFileIndexed = Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php");
+                String translatedWords = Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt");
+                String destinationFile = Server.MapPath("~/Results/" + fileName + "_final.php");
+
+                success = r.Recompile(translationFileIndexed, translatedWords, destinationFile);
+
+                // When completed, if succsessful
+                // Show download button
+                if (success)
+                {
+                    downloadButton.Visible = true;
+                    Session["downloadMe"] = destinationFile;
+                }
+                else
+                {
+                    Session["downloadMe"] = null;
+                    TranslateStatusLabel.Text = "Could not recompile the file!";
+                }
+            }
+            catch (Exception eDalton)
+            {
+                TranslateStatusLabel.Text = "Could not recompile the file! Error 3";
+            }
+
+            #endregion
         
     
     }
@@ -120,6 +135,7 @@ public partial class Translate : System.Web.UI.Page
         // Check to ensure that there exists a final file to download
         if (Session["downloadMe"] == null)
         {
+            TranslateStatusLabel.Text = "Could not download the file!";
             return;
         }
 

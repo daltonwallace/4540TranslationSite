@@ -9,8 +9,8 @@
     <form id="Form1" method="post" runat="server" enctype="multipart/form-data">
     <div>
 
-        <asp:FileUpload ID="FileUploadControl" runat="server" />
-        <asp:Button ID="uploadButton" runat="server" Text="Upload File" OnClick ="uploadFile" />
+        <asp:FileUpload ID="FileUploadControl" runat="server" type="button" class="btn btn-default"/>
+        <asp:Button ID="uploadButton" runat="server" Text="Upload File" OnClick ="uploadFile" type="button" class="btn btn-primary"/>
 
     </div>
     </form>

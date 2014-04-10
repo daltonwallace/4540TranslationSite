@@ -6,6 +6,9 @@
 <head runat="server">
     <title>4540 Translation Project</title>
 
+    <!-- Latest compiled and minified jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="CSS/bootstrap.min.css"/>
 
