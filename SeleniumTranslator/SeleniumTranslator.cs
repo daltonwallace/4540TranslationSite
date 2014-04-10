@@ -58,10 +58,6 @@ namespace ST
             // ID for result     on Google Translate = "result_box"
             for (int j = 0; j < lines.Length; j++)
             {
-                if (j == 10)
-                {
-                    break;
-                }
                 Console.WriteLine("Lines remaining on this language: " + ((lines.Length) - j).ToString());
 
                 // Skip over empty lines
