@@ -73,6 +73,7 @@ public partial class Translate : System.Web.UI.Page
             // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
             SeleniumTranslator.TranslateInputFile(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"), languageCode, Server.MapPath("~/tmp/" + fileName + "_words.txt"), ref isDone);
 
+            // Wait until the process is completed...
             while (isDone < 0) { Thread.Sleep(5000); };
 
             SeleniumFixer.FixInput(Server.MapPath("~/tmp/" + fileName + "_words.txt"), Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt"));
