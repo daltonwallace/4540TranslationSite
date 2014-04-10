@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "4540TranslationSite", ".", "{5E0CDB6E-D3E8-4C78-821E-CCC432834B49}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{33daa6aa-1771-4a04-a778-0305c09ea523}|SeleniumFixer.dll;{26cdbc32-a583-4600-84b4-0dba51445a8e}|SeleniumTranslator.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/4540TranslationSite"
+		Debug.AspNetCompiler.PhysicalPath = "..\4540TranslationSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\4540TranslationSite\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/4540TranslationSite"
+		Release.AspNetCompiler.PhysicalPath = "..\4540TranslationSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\4540TranslationSite\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1895"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumFixer", "SeleniumFixer\SeleniumFixer.csproj", "{33DAA6AA-1771-4A04-A778-0305C09EA523}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTranslator", "SeleniumTranslator\SeleniumTranslator.csproj", "{26CDBC32-A583-4600-84B4-0DBA51445A8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E0CDB6E-D3E8-4C78-821E-CCC432834B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0CDB6E-D3E8-4C78-821E-CCC432834B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0CDB6E-D3E8-4C78-821E-CCC432834B49}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0CDB6E-D3E8-4C78-821E-CCC432834B49}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{33DAA6AA-1771-4A04-A778-0305C09EA523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33DAA6AA-1771-4A04-A778-0305C09EA523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33DAA6AA-1771-4A04-A778-0305C09EA523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33DAA6AA-1771-4A04-A778-0305C09EA523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CDBC32-A583-4600-84B4-0DBA51445A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CDBC32-A583-4600-84B4-0DBA51445A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CDBC32-A583-4600-84B4-0DBA51445A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CDBC32-A583-4600-84B4-0DBA51445A8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
