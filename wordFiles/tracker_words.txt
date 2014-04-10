@@ -1,0 +1,407 @@
+
+@ticket tracker/user 
+@tracker 
+@add a 
+@can be chosen for 
+@comment 
+@configure tracker 
+@configure network 
+@be choosen to resolve 
+@manage 
+@manage priority of 
+@manage watches on 
+@report 
+@resolve 
+@see issue 
+@share elements at site 
+@see all 
+@view priority of my owned 
+@view issue work 
+@AND 
+@IN 
+@abandoned 
+@action 
+@active 
+@add a 
+@add an 
+@add this search query to "my 
+@add a 
+@add to this 
+@administration 
+@administrators 
+@watch my work in all 
+@all 
+@ask resolvers to raise 
+@assigned 
+@assignee 
+@attributes 
+@browse 
+@browser 
+@version 
+@<i>assigned 
+@send upper 
+@transferred 
+@cced 
+@ccs 
+@checkbox 
+@checkbox 
+@choose a local tracker as 
+@choose a remote 
+@choose a remote 
+@clear search 
+@comment 
+@comments 
+@component 
+@count 
+@by 
+@by monthly creation 
+@by 
+@report by 
+@created in current 
+@create a new 
+@current 
+@database 
+@report 
+@default 
+@delete 
+@dependencies 
+@depends 
+@description is 
+@add a checkbox 
+@add a checkbox 
+@add a dropdown 
+@add an attachment file 
+@add a radio 
+@add a radio 
+@add a text 
+@add a text 
+@update a checkbox 
+@update a checkbox 
+@update a dropdown 
+@update a attachment file 
+@update a radio button 
+@update a radio button 
+@update a text 
+@update a text 
+@dropdown 
+@update 
+@update 
+@change a stored 
+@change a cc 
+@available 
+@used 
+@elucidation 
+@mail 
+@urgent 
+@target tracker has no 
+@allow 
+@when this option is enabled, readers of issue records can add comments in the 
+@could not submit issue(s) attribute(s). case {$a} 
+@element already in 
+@cannot delete carbon copies for user : {$a} 
+@cannot delete query id: {$a} 
+@only numbers (or a list of numbers separated by a comma allowed in the issue number 
+@cannot add element to list of elements to use for this 
+@could not clear elements for issue {$a} 
+@could not create element 
+@cannot delete carbon copy {$a} user : {$a} 
+@cannot delete carbon 
+@cannot delete element from list of elements to use for this 
+@cannot delete element from list of elements to use for this 
+@could not delete old 
+@error trying to delete element 
+@cannot edit this 
+@cannot hide element from form for this 
+@could not log old 
+@could not insert preference 
+@cannot set parent in this 
+@cannot show element in form for this 
+@error registering new 
+@cannot update the element option because it is currently being used as a attribute for an 
+@cannot unbind parent of this 
+@could not update 
+@could not update issue for 
+@could not update preference 
+@could not update tracker 
+@could not update 
+@cannot view element 
+@error writing 
+@could not write dependency 
+@cannot add element to list of elements to use for this 
+@failed to set cookie: {$a} 
+@course is 
+@course module id was 
+@could not update 
+@element does not 
+@element already in 
+@error: cannot find action: {$a} 
+@invalid element. cannot edit element 
+@course module is 
+@you do not have access to view all 
+@you do not have access to view this 
+@you do not have access to edit this 
+@could not submit 
+@error on remote side<br/> {$a} 
+@remote error: {$a} 
+@error on sending cascade :<br/> {$a} 
+@unable to save query as 
+@unable to update query id {$a} 
+@could not update 
+@trends 
+@issue state 
+@attached 
+@follow 
+@trend 
+@a solution is published for this 
+@hide 
+@hide 
+@hide 
+@hide 
+@assignees 
+@i can work on 
+@i cannot work on 
+@i can manage ticket 
+@i cannot manage ticket 
+@i cannot 
+@i cannot assign nor close 
+@i can 
+@i can assign and close 
+@identify 
+@testing 
+@description 
+@still in 
+@ticket 
+@ticket 
+@ticket 
+@ticket 
+@tickets to assign: {$a} 
+@tickets to watch: {$a} 
+@known tracker form 
+@list 
+@local 
+@lower 
+@lower to 
+@manage 
+@cascade and network 
+@manager 
+@my 
+@team bug 
+@user support 
+@task 
+@customized 
+@user support - 
+@no file loaded 
+@options 
+@print 
+@reports 
+@resolved 
+@thanks for your contribution and helping making this service more 
+@we have registered your query. i has been assigned to {$a} 
+@we have registered your query. it will be assigned and handled as soon as 
+@you just defined a task. don't forget to assign it to some recipient in the next screen to distribute 
+@user support - 
+@month 
+@resolver i 
+@tickets i 
+@my 
+@my 
+@my 
+@my 
+@my 
+@my 
+@my 
+@name 
+@name cannot be 
+@new 
+@no assigned 
+@no 
+@no 
+@leave 
+@no 
+@no data to 
+@no 
+@no element 
+@no uploaded 
+@no ticket 
+@no resolved 
+@no local candidate for 
+@no 
+@moodle network seems 
+@no stored 
+@no network host 
+@no remote tracker 
+@no reporters, there are probably no issues entered 
+@the 
+@no ticket 
+@no owned 
+@no tickets or 
+@notifications 
+@this parameter enables or disables mail notifications from the tracker. if enabled, some events or state changes within the tracker will trigger mail messages to the concerned 
+@no 
+@no 
+@ticket 
+@observers 
+@open 
+@option 
+@this options id already in use for this 
+@order 
+@pages 
+@posted 
+@potential 
+@preferences 
+@preferences setups which default notifications you may receive when creating a new entry or when you register a watch for an existing 
+@priority 
+@attributed 
+@user 
+@published 
+@queries 
+@query 
+@query 
+@radio 
+@horizontal radio 
+@raise 
+@priority raising request for a 
+@ask for raising 
+@raise to 
+@reason 
+@watch this 
+@post a 
+@reported 
+@reporter 
+@solution 
+@resolved 
+@resolved 
+@resolved 
+@my 
+@resolvers 
+@resolving 
+@running in current 
+@save a 
+@save the 
+@search 
+@search 
+@search by 
+@search 
+@launch this query 
+@parent 
+@send 
+@don't advise me when 
+@don't advise me when 
+@don't advise me when solution is 
+@don't advise me when a solution is 
+@don't advise me when is 
+@don't advise me when 
+@don't advise me when on 
+@send me the 
+@turn this element site 
+@sharing 
+@show 
+@show 
+@show 
+@show 
+@site 
+@solution 
+@order 
+@standalone tracker (top level 
+@ticket 
+@status 
+@strict 
+@a new ticket is reported in tracker {$a} 
+@submit the 
+@sub 
+@opened 
+@waiting 
+@reported 
+@solved 
+@summary 
+@support 
+@being 
+@text 
+@text 
+@thanks to contributing to the constant enhancement of this 
+@thanks 
+@ticket 
+@tickets 
+@my capabilities in this 
+@<p>when publishing this service, you allow trackers from {$a} cascade the support tickets to a local 
+@<ul><li><i>depends on</i>: you have to subscribe {$a} this 
+@<p>subscribing to this service allows local trackers to send support tickets to some tracker in 
+@<ul><li><i>depends on</i>: you have to publish this service on 
+@tracker module 
+@tracker module 
+@tracker's 
+@issue state change in tracker {$a} 
+@parent host for 
+@tracker 
+@transferred 
+@transferred 
+@support ticket 
+@turn editing 
+@turn editing 
+@type 
+@unassigned 
+@unbind 
+@both tracker definition do not match. this may result in unexpected behavior when cascading support 
+@unregister from 
+@advise me when posting 
+@advise me when 
+@advise me when 
+@advise me when solution is 
+@advise me when a solution is 
+@advise me when is 
+@advise me when 
+@advise me when got 
+@a user has requested an urgent priority 
+@urgent 
+@views 
+@see 
+@vote 
+@validated 
+@waiting 
+@watches 
+@you need an authorized account here to report a 
+@states 
+@support mode applies some predefined settings and role overrides on the tracker to achieve a preset 
+@* bug report: reporters have access to the whole ticket list for reading the issues in a collaborative way. all states are enabled for a 
+@technical operation workflow, including operations on pre production test 
+@* user support/ticketing: reporters usually have only access to the tickets they have posted and cannot access to the ticket browsing mode. some 
+@have been disabled, that are more commonly used for technical 
+@* task distribution: reporters can have or not access to the whole distributed ticket list. workers can only have access to the tickets they are assigned 
+@through the "my work" screen. they will not have access to the browse function. some intermediate states have been disabled for a simpler marking of task 
+@* customized: when customized, the activity editor can choose states and overrides to apply to the tracker. this is the most flexible setting, but needs a correct knowledge of moodle roles and setting 
+@the tracker activity allows tracking tickets for help, bug report, or also trackable activities in a 
+@the activity allows creating the tracking form with attributes elements from a list of configurable elements. some elements can be shared at 
+@level to be reused in other 
+@the ticket (or task) can be assigned for work to another 
+@the tracked ticket is a state full ticket that sends state change notifications to any follower that has enabled notifications. a user can choose which state changes he tracks 
+@tickets can be chained in dependency, so it may be easy to follow a ticket 
+@history of changes are tracked for each 
+@ticket tracker can be cascaded locally or through mnet allowing a ticket manager to send a ticket to a remote (higher level) ticket 
+@trackers can now be chained so that ticket can be moved between 
+@issue submission form can be customized by adding form elements. the "summary", "description", et "reportedly" fields are as default, but any additional qualifier can be added to the issue 
+@elements that can be added are "form elements" i.e. standard form widgets that can represent any qualifier or open description, such as radio buttons, checkboxes, dropdown, text fields or text 
+@elements are set using the following 
+@### 
+@this name is the element identifier, technically speaking. it must be a token using alphanumeric chars and the _ character, without spaces or non printable chars. the name will not appear on the user 
+@### 
+@the description is used when the element has to be identified on the user 
+@### 
+@some elements have a finite list of option 
+@options are added after the element is 
+@field texts and text areas do not have any 
+@### 
+@the name identifies the option value. it should be a token using alphanumeric chars and _ without spaces or non printable 
+@### 
+@the description is the viewable counterpart of the option 
+@### 
+@you may define the order in which the options appear in the 
+@text field and text area elements do not have any 
+@this parameter allows defining a fixed prefix that will be prepended to the issue numerical identifier. this should allow better identification of a issue entry in documents, forum 
+@checking this checkbox will send a signal to developers or tickets managers so your issue can be considered more 
+@please consider although that there is no automated process using directly this variable. the acceptation of the emergency will be depending on how urgent support administrators have considered your 
+@this module provides an administrator or technical operator a way to collect locally issues on a moodle implementation. it may be used mainly as an overall system tool for moodle administration and support to end users, but also can be used as any other module for student projects. it can be instantiated several times within a course 
+@the issue description form is fully customizable. the tracker administrator can add as many description he needs by adding form elements. the integrated search engine do adjust itself to this 
+@you might require incoming tickets are pre assigned to one of the available 
+@when enabled some roles will be able to comment 
+@when enabled some state changes may result in sending notifications to users when user is watching an issue. users can configure which event will notify 
+@when enabled, each specific internal role in tracker (reporter, developer, resolvers, manager) will only have access to his accessible states against his 

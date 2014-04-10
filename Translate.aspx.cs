@@ -7,10 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using FileUniter;
-
 using ST;
+using System.Threading;
 
-using ST;
 
 
 public partial class Translate : System.Web.UI.Page
@@ -46,11 +45,7 @@ public partial class Translate : System.Web.UI.Page
         bool success = true;
 
         // The hard part
-        // Taylor is having difficulty getting the file paths correct during testing.
-        // Translate requires 3 params : 1-> the input path; 2-> language code; 3-> the output path
-        // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
-        SeleniumTranslator.TranslateInputFile("/* INPUT FILE */", "/* LANG */", "/* DESTINATION */");
-        SeleniumFixer.FixInput("/* INPUT */", "/* FIXED OUTPUT */");
+        
        
         // The file is assumed to exist at this point
         String filePath = (String) Session["currentFilePath"];
@@ -67,9 +62,20 @@ public partial class Translate : System.Web.UI.Page
             #endregion
 
             #region Translate the file -- Taylor
-            
+
+            int isDone = -1;
+
             // Given a language code AND a file with words  AND fileName WITHOUT extension(i.e. "es" AND "~/wordFiles/forum_words.txt" AND "forum" "
             // Create "~/wordFiles/forum_words_translated.txt"
+
+            // Taylor is having difficulty getting the file paths correct during testing.
+            // Translate requires 3 params : 1-> the input path; 2-> language code; 3-> the output path
+            // Fixer requires 2 params : 1-> the input path (which is the recent output path of the translator); 2-> the output path
+            SeleniumTranslator.TranslateInputFile(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"), languageCode, Server.MapPath("~/tmp/" + fileName + "_words.txt"), ref isDone);
+
+            while (isDone < 0) { Thread.Sleep(5000); };
+
+            SeleniumFixer.FixInput(Server.MapPath("~/tmp/" + fileName + "_words.txt"), Server.MapPath("~/wordFiles/" + fileName + "_words_translated.txt"));
 
             #endregion
 
