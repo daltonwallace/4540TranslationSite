@@ -1,0 +1,4 @@
+@es posible que requieren boletos de entrada se pre asignados a uno de los disponibles
+@cuando está activado algunas funciones podrán comentar
+@cuando está habilitado algunos cambios de estado pueden resultar en el envío de notificaciones a los usuarios cuando el usuario está viendo un problema. los usuarios pueden configurar qué evento se notificará
+@cuando está activada, cada función interna específica en perseguidor (periodista, programador, resolvers, manager) sólo tendrá acceso a sus estados accesibles contra su

@@ -11,8 +11,8 @@ namespace ST
         public static void FixInput(String input, String fix)
         {
             // Create a new file to output the results 
-            System.IO.StreamWriter output = new System.IO.StreamWriter(input);
-            String[] lines = System.IO.File.ReadAllLines(fix);
+            System.IO.StreamWriter output = new System.IO.StreamWriter(fix);
+            String[] lines = System.IO.File.ReadAllLines(input);
 
             int pointer = 0;
             foreach (string line in lines)
