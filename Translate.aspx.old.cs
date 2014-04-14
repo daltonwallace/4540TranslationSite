@@ -48,7 +48,7 @@ public partial class Translate : System.Web.UI.Page
         String filePath = (String) Session["currentFilePath"];
         String fileName = (String)Session["filename"];
         String languageCode = languagesDDL.SelectedValue;
-        
+
         #region Split the file -- Todd
 
         // Given uploaded filePath and fileName WITHOUT extension 
@@ -59,44 +59,13 @@ public partial class Translate : System.Web.UI.Page
         //                         AND 
         // Server.MapPath("~/wordFiles/" + fileName + "_words.txt")
 
-        String nextLine = "";
-        String extractedValue = "";
-        String indexedLine = "";
-
             try
             {
-                StreamReader sr = new StreamReader(filePath);
-                StreamWriter indexWriter = new StreamWriter(Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php"));
-                StreamWriter wordWriter = new StreamWriter(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"));
-                {
-                    while ((nextLine = sr.ReadLine()) != null)
-                    {
-                        if (!nextLine.Equals("") && nextLine[0].Equals('$'))
-                        {
-                            extractedValue = nextLine.Split(new char[] { '\'', '\'' })[3];
-
-                            indexedLine = nextLine.Replace(extractedValue, "#");
-
-                            {
-                                indexWriter.WriteLine(indexedLine);
-                            }
-
-                            {
-                                wordWriter.WriteLine("@" + extractedValue);
-                            }
-                        }
-
-                    }
-                }
-
-
-                indexWriter.Close();
-                wordWriter.Close();
 
             }
             catch (Exception eTodd)
             {
-                TranslateStatusLabel.Text = "Could not split the file! Error 1\n" + eTodd.Message;
+                TranslateStatusLabel.Text = "Could not split the file! Error 1";
             }
 
             #endregion
