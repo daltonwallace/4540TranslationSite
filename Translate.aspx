@@ -20,7 +20,6 @@
                 <div class="well bs-component">
             <h2>Select translation language: </h2>
             <asp:DropDownList ID="languagesDDL" runat="server">
-<<<<<<< HEAD
                 <asp:ListItem Text="English" Value="en" Selected="True"></asp:ListItem>
                 <asp:ListItem Text="Afrikaans" Value="af"></asp:ListItem>
                 <asp:ListItem Text="Albanian" Value="sq"></asp:ListItem>
@@ -30,7 +29,6 @@
                 <asp:ListItem Text="Bengali" Value="bn"></asp:ListItem>
                 <asp:ListItem Text="Bosnian" Value="bs"></asp:ListItem>
                 <asp:ListItem Text="Bulgarian" Value="bg"></asp:ListItem>
-=======
                 <asp:ListItem Text="Afrikaans" Value="af" Selected="True"></asp:ListItem>
                 <asp:ListItem Text="Albanian" Value="sq"></asp:ListItem>
                 <asp:ListItem Text="Armenian" Value="hy"></asp:ListItem>
@@ -40,17 +38,13 @@
                 <asp:ListItem Text="Bengali" Value="bn"></asp:ListItem>
                 <asp:ListItem Text="Bosnian" Value="bs"></asp:ListItem>
                 <asp:ListItem Text="Bulgaria" Value="bg"></asp:ListItem>
->>>>>>> c3385a3f4674c4cc5e549017fefdaf14757a0fe7
                 <asp:ListItem Text="Catalan" Value="ca"></asp:ListItem>
                 <asp:ListItem Text="Cebuano" Value="ceb"></asp:ListItem>
                 <asp:ListItem Text="Croatian" Value="hr"></asp:ListItem>
                 <asp:ListItem Text="Czech" Value="cs"></asp:ListItem>
                 <asp:ListItem Text="Danish" Value="da"></asp:ListItem>
                 <asp:ListItem Text="Dutch" Value="nl"></asp:ListItem>
-<<<<<<< HEAD
-=======
                 <asp:ListItem Text="English" Value="en"></asp:ListItem>
->>>>>>> c3385a3f4674c4cc5e549017fefdaf14757a0fe7
                 <asp:ListItem Text="Esperanto" Value="eo"></asp:ListItem>
                 <asp:ListItem Text="Estonian" Value="et"></asp:ListItem>
                 <asp:ListItem Text="Filipino" Value="tl"></asp:ListItem>
@@ -93,13 +87,10 @@
                 <asp:ListItem Text="Romanian" Value="ro"></asp:ListItem>
                 <asp:ListItem Text="Russian" Value="ru"></asp:ListItem>
                 <asp:ListItem Text="Serbian" Value="sr"></asp:ListItem>
-<<<<<<< HEAD
                 <asp:ListItem Text="Slovak" Value="sl"></asp:ListItem>
                 <asp:ListItem Text="Slovenian" Value="sk"></asp:ListItem>
-=======
                 <asp:ListItem Text="Slovak" Value="sk"></asp:ListItem>
                 <asp:ListItem Text="Slovenian" Value="sl"></asp:ListItem>
->>>>>>> c3385a3f4674c4cc5e549017fefdaf14757a0fe7
                 <asp:ListItem Text="Somali" Value="so"></asp:ListItem>
                 <asp:ListItem Text="Spanish" Value="es"></asp:ListItem>
                 <asp:ListItem Text="Swahili" Value="sw"></asp:ListItem>
@@ -114,11 +105,7 @@
                 <asp:ListItem Text="Welsh" Value="cy"></asp:ListItem>
                 <asp:ListItem Text="Yiddish" Value="yi"></asp:ListItem>
                 <asp:ListItem Text="Yoruba" Value="yo"></asp:ListItem>
-<<<<<<< HEAD
                 <asp:ListItem Text="Zulu" Value="zu"></asp:ListItem>               
-=======
-                <asp:ListItem Text="Zulu" Value="zu"></asp:ListItem>                       
->>>>>>> c3385a3f4674c4cc5e549017fefdaf14757a0fe7
             </asp:DropDownList>
               
                 <!-- Because the translation takes so long, call AJAX so that the user knows to wait-->
