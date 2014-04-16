@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using FileUniter;
 using ST;
+using System.Text;
 using System.Threading;
 
 
@@ -50,7 +51,6 @@ public partial class Translate : System.Web.UI.Page
         String languageCode = languagesDDL.SelectedValue;
         
         #region Split the file -- Todd
-
         // Given uploaded filePath and fileName WITHOUT extension 
         // (i.e. "~/uploadedfiles/forum.php" AND "forum")
 
@@ -59,46 +59,198 @@ public partial class Translate : System.Web.UI.Page
         //                         AND 
         // Server.MapPath("~/wordFiles/" + fileName + "_words.txt")
 
-        String nextLine = "";
-        String extractedValue = "";
-        String indexedLine = "";
+         String trackerFilePath = filePath;
+            String trackerTmpFilePath = Server.MapPath("~/indexedFiles/" + fileName + "_tmp.php");
+            String trackerWordsFilePath = Server.MapPath("~/wordFiles/" + fileName + "_words.txt");
+            String trackerWordsTmpFilePath = Server.MapPath("~/wordFiles/" + fileName + "_words_tmp.txt");
+            String trackerIndexedFilePath = Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php");
 
             try
             {
-                StreamReader sr = new StreamReader(filePath);
-                StreamWriter indexWriter = new StreamWriter(Server.MapPath("~/indexedFiles/" + fileName + "_indexed.php"));
-                StreamWriter wordWriter = new StreamWriter(Server.MapPath("~/wordFiles/" + fileName + "_words.txt"));
+
+           
+
+            #region Extract Words
+
+                // Set up to read in the original lang file to be translated
+                StreamReader sr = new StreamReader(trackerFilePath);
+
+                // Set up to remove escaped characters
+                StreamWriter sanitizedInput = new StreamWriter(trackerTmpFilePath);
+
+                // Set up the 'words' file for it's first stage of writing
+                StreamWriter wordWriter_Stage1 = new StreamWriter(trackerWordsTmpFilePath);
+
+                // Read in the file to translate
+                String text = "";
+                String[] extractedWords;
+
+                text = sr.ReadToEnd();  // Raw text
+                sr.Close();             // Done reading so close and dispose
+                sr.Dispose(); 
+
+                // Replace all escaped characters with &var, where 'var' is the char name
+                // And write to new file
+                sanitizedInput.Write(text.Replace("\\'", "&tick"));
+                sanitizedInput.Close();         // Done writing so close and dispose
+                sanitizedInput.Dispose();
+
+                // Read sanitized tracker.php file
+                StreamReader siReader = new StreamReader(trackerTmpFilePath);
+                String sanitizedText = siReader.ReadToEnd();
+                siReader.Close();
+                siReader.Dispose();
+
+                /** Here we split the now sanitized file that only contains the $string values we want
+                 * into subsections delimited by the '.
+                 * 
+                 * Split functions in such a way that the following string evalutes to the subsequent subsections:
+                 *   'In the sun,' she said, 'I would melt.' => [In the sun,] [ she said, ] [I would melt.]
+                 *   
+                 * Our expected input format is: $string['varname'] = 'value';
+                 * 
+                 * In order to extract the value we must take the 3rd substring. This is true for input with only one line
+                 * If our input has more than one line then the value lies in every 4th subsection                 * 
+                 *
+                 */
+
+                // Divide the text into subsections
+                extractedWords = sanitizedText.Split(new char[] { '\'', '\'' });
+
+
+                // Extract the third occurance, giving us the first value
+                wordWriter_Stage1.WriteLine("@" + extractedWords[3]);
+                for (int i = 7; i < extractedWords.Length; i += 4)
                 {
-                    while ((nextLine = sr.ReadLine()) != null)
-                    {
-                        if (!nextLine.Equals("") && nextLine[0].Equals('$'))
-                        {
-                            extractedValue = nextLine.Split(new char[] { '\'', '\'' })[3];
-
-                            indexedLine = nextLine.Replace(extractedValue, "#");
-
-                            {
-                                indexWriter.WriteLine(indexedLine);
-                            }
-
-                            {
-                                wordWriter.WriteLine("@" + extractedValue);
-                            }
-                        }
-
-                    }
+                    // exctract ever 4th occurance
+                    wordWriter_Stage1.WriteLine("@" + extractedWords[i]);
                 }
 
+                wordWriter_Stage1.Close();                      
+                wordWriter_Stage1.Dispose();
 
-                indexWriter.Close();
-                wordWriter.Close();
+                // Read 'words' file from stage 1
+                StreamReader wordReader = new StreamReader(trackerWordsTmpFilePath);
+                String wordsList = wordReader.ReadToEnd();      // dump the file contents into a string
+                                                                // Probably not the most efficient way, but it is the most
+                                                                // robust for the dev'r
+                wordReader.Close();    
+                wordReader.Dispose();
+
+                // Replace &tick with "\\'"
+                StreamWriter wordWriter_Stage2 = new StreamWriter(trackerWordsFilePath);
+                wordWriter_Stage2.Write(wordsList.Replace("&tick", "\\'"));
+                wordWriter_Stage2.Close();
+
+                #endregion
+
+            #region Index the file
+
+                StreamReader trackerReader = new StreamReader(trackerFilePath);
+                StreamWriter trackerTmpWriter = new StreamWriter(trackerTmpFilePath);
+                
+                String text1 = trackerReader.ReadLine();
+
+                // Extract only the lines that begin the variable definition
+                while (text1 != null)
+                {
+                    if (text1 != "" && text1[0].Equals('$'))
+                    {
+                        trackerTmpWriter.WriteLine(text1);
+                    }
+
+                    text1 = trackerReader.ReadLine();
+                }
+
+                trackerTmpWriter.Close();
+                trackerTmpWriter.Dispose();
+
+
+                StreamReader trackerTmpReader = new StreamReader(trackerTmpFilePath);
+                String text2 = trackerTmpReader.ReadLine();
+                StringBuilder sb = new StringBuilder(text2);
+                StringBuilder tmp = new StringBuilder();
+
+                int index = 0;
+                int length = 0;
+
+                while (text2 != null)
+                {
+                    foreach (char ch in text2)
+                    {
+                        if (ch.Equals('='))
+                        {
+                            // This assumes proper file input format
+                            index = text2.IndexOf(ch);
+                            if ((text2.Length - (index + 2)) >= 0)
+                                sb[++index] = ' ';
+                            else
+                                sb.Append(" ");
+
+                            if ((text2.Length - (index + 2)) >= 0)
+                                sb[++index] = '\'';
+                            else
+                                sb.Append("'");
+
+                            if ((text2.Length - (index + 2)) >= 0)
+                                sb[++index] = '#';
+                            else
+                                sb.Append("#");
+
+                            if ((text2.Length - (index + 2)) >= 0)
+                                sb[++index] = '\'';
+                            else
+                                sb.Append("'");
+
+                            if ((text2.Length - (index + 2)) >= 0)
+                                sb[++index] = ';';
+                            else
+                                sb.Append(";");
+
+                            length = text2.Length - index - 1;
+
+                            if (length < 0)
+                            {
+                                length++;
+                            }
+                            // string length - char position + 1 removes the excess :)
+                            sb.Remove(++index, length);
+                            
+                        }
+                    }
+
+                    tmp.AppendLine(sb.ToString());
+                    text2 = trackerTmpReader.ReadLine();
+                    sb = new StringBuilder(text2);
+                }
+
+                trackerTmpReader.Close();
+                trackerTmpReader.Dispose();
+
+
+                StreamWriter trackerIndexedWriter = new StreamWriter(trackerIndexedFilePath);
+                trackerIndexedWriter.Write(tmp.ToString());
+                trackerIndexedWriter.Close();
+                trackerIndexedWriter.Dispose();
+
+                #endregion  
+
 
             }
-            catch (Exception eTodd)
+            catch (Exception eTodd1)
             {
-                TranslateStatusLabel.Text = "Could not split the file! Error 1\n" + eTodd.Message;
+                TranslateStatusLabel.Text = "Could not split the file! Error 1\n" + eTodd1.Message + "\n" + eTodd1;
             }
 
+            try
+            {
+                File.Delete(trackerTmpFilePath);
+                File.Delete(trackerWordsTmpFilePath);
+            }
+            catch (Exception eTodd2)
+            {
+                TranslateStatusLabel.Text = eTodd2 + "\nCould not delete temporary files. Their existence may pose a security threat";
+            }
             #endregion
 
         #region Translate the file -- Taylor
