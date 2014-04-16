@@ -29,7 +29,7 @@
                 <asp:ListItem Text="Bengali" Value="bn"></asp:ListItem>
                 <asp:ListItem Text="Bosnian" Value="bs"></asp:ListItem>
                 <asp:ListItem Text="Bulgarian" Value="bg"></asp:ListItem>
-                <asp:ListItem Text="Afrikaans" Value="af" Selected="True"></asp:ListItem>
+                <asp:ListItem Text="Afrikaans" Value="af"></asp:ListItem>
                 <asp:ListItem Text="Albanian" Value="sq"></asp:ListItem>
                 <asp:ListItem Text="Armenian" Value="hy"></asp:ListItem>
                 <asp:ListItem Text="Azerbaijani" Value="az"></asp:ListItem>
@@ -44,7 +44,6 @@
                 <asp:ListItem Text="Czech" Value="cs"></asp:ListItem>
                 <asp:ListItem Text="Danish" Value="da"></asp:ListItem>
                 <asp:ListItem Text="Dutch" Value="nl"></asp:ListItem>
-                <asp:ListItem Text="English" Value="en"></asp:ListItem>
                 <asp:ListItem Text="Esperanto" Value="eo"></asp:ListItem>
                 <asp:ListItem Text="Estonian" Value="et"></asp:ListItem>
                 <asp:ListItem Text="Filipino" Value="tl"></asp:ListItem>
